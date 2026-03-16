@@ -1,68 +1,67 @@
+aid: hashicorp-vault
 name: HashiCorp Vault
-description: 'HashiCorp Vault is a secrets management tool that provides secure storage, access control, and distribution of tokens, passwords, certificates, and encryption keys. It provides a unified interface to any secret while providing tight access control and recording a detailed audit log.
-
-  '
+description: >-
+  HashiCorp Vault is a secrets management tool that provides secure storage,
+  access control, and distribution of tokens, passwords, certificates, and
+  encryption keys. It provides a unified interface to any secret while
+  providing tight access control and recording a detailed audit log.
 image: https://www.datocms-assets.com/2885/1620155116-brandhcvaultprimaryattributedcolor.svg
-url: https://www.vaultproject.io
+url: https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/apis.yml
+type: Index
 created: '2024-01-15'
-modified: '2024-01-15'
-specificationVersion: '0.18'
-apis:
-- name: HashiCorp Vault HTTP API
-  description: 'The Vault HTTP API provides full access to Vault via HTTP. Every aspect of Vault can be controlled via this API. The Vault CLI uses the HTTP API to access Vault functionality.
-
-    '
-  image: https://www.datocms-assets.com/2885/1620155116-brandhcvaultprimaryattributedcolor.svg
-  humanURL: https://www.vaultproject.io
-  baseURL: https://127.0.0.1:8200/v1
-  tags:
-  - secrets management
-  - security
-  - encryption
-  - authentication
-  - api
-  properties:
-  - type: X-documentation
-    url: https://developer.hashicorp.com/vault/api-docs
-  - type: X-openapi
-    url: https://github.com/hashicorp/vault/blob/main/openapi.json
-  - type: X-authentication
-    url: https://developer.hashicorp.com/vault/docs/auth
-  - type: X-tutorials
-    url: https://developer.hashicorp.com/vault/tutorials
-  - type: X-github
-    url: https://github.com/hashicorp/vault
-  - type: X-support
-    url: https://support.hashicorp.com
-  - type: X-terms-of-service
-    url: https://www.hashicorp.com/terms-of-service
-  - type: X-pricing
-    url: https://www.hashicorp.com/products/vault/pricing
-  - type: X-status
-    url: https://status.hashicorp.com
-  - type: X-sdk
-    url: https://developer.hashicorp.com/vault/docs/libraries
-  contact:
-  - type: X-twitter
-    url: https://twitter.com/hashicorp
-  - type: X-email
-    url: support@hashicorp.com
-maintainers:
-- name: HashiCorp
-  email: support@hashicorp.com
-  url: https://www.hashicorp.com
+modified: '2026-03-16'
+specificationVersion: '0.19'
 tags:
-- secrets
-- security
-- encryption
-- infrastructure
-- devops
-- authentication
-- authorization
-include:
-- name: Vault Secrets Engines
-  url: https://developer.hashicorp.com/vault/docs/secrets
-- name: Vault Auth Methods
-  url: https://developer.hashicorp.com/vault/docs/auth
-- name: Vault Audit Devices
-  url: https://developer.hashicorp.com/vault/docs/audit
+  - Secrets Management
+  - Security
+  - Encryption
+  - Infrastructure
+  - DevOps
+apis:
+  - aid: hashicorp-vault:vault-http-api
+    name: HashiCorp Vault HTTP API
+    description: >-
+      The Vault HTTP API provides full access to Vault via HTTP. Every aspect
+      of Vault can be controlled via this API. The Vault CLI uses the HTTP
+      API to access Vault functionality.
+    humanURL: https://developer.hashicorp.com/vault/api-docs
+    baseURL: https://127.0.0.1:8200/v1
+    tags:
+      - Secrets Management
+      - Security
+      - Encryption
+    properties:
+      - type: Documentation
+        url: https://developer.hashicorp.com/vault/api-docs
+      - type: OpenAPI
+        url: https://github.com/hashicorp/vault/blob/main/openapi.json
+      - type: Authentication
+        url: https://developer.hashicorp.com/vault/docs/auth
+      - type: Getting Started
+        url: https://developer.hashicorp.com/vault/tutorials
+common:
+  - type: Website
+    url: https://www.vaultproject.io/
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/docs
+  - type: Getting Started
+    url: https://developer.hashicorp.com/vault/tutorials
+  - type: Support
+    url: https://support.hashicorp.com
+  - type: Status
+    url: https://status.hashicorp.com
+  - type: Blog
+    url: https://www.hashicorp.com/blog
+  - type: Pricing
+    url: https://www.hashicorp.com/products/vault/pricing
+  - type: Terms of Service
+    url: https://www.hashicorp.com/terms-of-service
+  - type: Privacy Policy
+    url: https://www.hashicorp.com/privacy
+  - type: GitHub Organization
+    url: https://github.com/hashicorp/vault
+  - type: SDKs
+    url: https://developer.hashicorp.com/vault/docs/libraries
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

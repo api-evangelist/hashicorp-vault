@@ -34,7 +34,8 @@ apis:
       - type: Documentation
         url: https://developer.hashicorp.com/vault/api-docs
       - type: OpenAPI
-        url: https://github.com/hashicorp/vault/blob/main/openapi.json
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/openapi/vault-http-api.yml
       - type: Authentication
         url: https://developer.hashicorp.com/vault/docs/auth
       - type: Getting Started

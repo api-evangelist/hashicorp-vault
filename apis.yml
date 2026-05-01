@@ -9,7 +9,7 @@ image: https://www.datocms-assets.com/2885/1620155116-brandhcvaultprimaryattribu
 url: https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/apis.yml
 type: Index
 created: '2024-01-15'
-modified: '2026-03-16'
+modified: '2026-04-28'
 specificationVersion: '0.19'
 tags:
   - DevOps
@@ -35,7 +35,7 @@ apis:
         url: https://developer.hashicorp.com/vault/api-docs
       - type: OpenAPI
         url: >-
-          https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/openapi/vault-http-api.yml
+          https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/openapi/hashicorp-vault-openapi.yml
       - type: Authentication
         url: https://developer.hashicorp.com/vault/docs/auth
       - type: Getting Started

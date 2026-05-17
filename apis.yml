@@ -38,28 +38,28 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/openapi/hashicorp-vault-openapi.yml
       - type: Authentication
         url: https://developer.hashicorp.com/vault/docs/auth
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.hashicorp.com/vault/tutorials
 common:
   - type: Website
     url: https://www.vaultproject.io/
   - type: Documentation
     url: https://developer.hashicorp.com/vault/docs
-  - type: Getting Started
+  - type: GettingStarted
     url: https://developer.hashicorp.com/vault/tutorials
   - type: Support
     url: https://support.hashicorp.com
-  - type: Status
+  - type: StatusPage
     url: https://status.hashicorp.com
   - type: Blog
     url: https://www.hashicorp.com/blog
   - type: Pricing
     url: https://www.hashicorp.com/products/vault/pricing
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.hashicorp.com/terms-of-service
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.hashicorp.com/privacy
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/hashicorp/vault
   - type: SDKs
     url: https://developer.hashicorp.com/vault/docs/libraries

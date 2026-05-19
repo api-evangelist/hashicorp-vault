@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: HashiCorp Vault HTTP API — Auth - AppRole
+  description: 'HashiCorp Vault HTTP API — Auth - AppRole. 1 operations. Lead operation: Login with AppRole. Self-contained
+    Naftiko capability covering one Hashicorp Vault business surface.'
+  tags:
+  - Hashicorp Vault
+  - Auth - AppRole
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HASHICORP_VAULT_API_KEY: HASHICORP_VAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hashicorp-vault-auth-approle
+    baseUri: https://127.0.0.1:8200/v1
+    description: HashiCorp Vault HTTP API — Auth - AppRole business capability. Self-contained, no shared references.
+    resources:
+    - name: auth-approle-login
+      path: /auth/approle/login
+      operations:
+      - name: loginapprole
+        method: POST
+        description: Login with AppRole
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: X-Vault-Token
+      value: '{{env.HASHICORP_VAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: hashicorp-vault-auth-approle-rest
+    port: 8080
+    description: REST adapter for HashiCorp Vault HTTP API — Auth - AppRole. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/auth/approle/login
+      name: auth-approle-login
+      description: REST surface for auth-approle-login.
+      operations:
+      - method: POST
+        name: loginapprole
+        description: Login with AppRole
+        call: hashicorp-vault-auth-approle.loginapprole
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hashicorp-vault-auth-approle-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for HashiCorp Vault HTTP API — Auth - AppRole. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: login-approle
+      description: Login with AppRole
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hashicorp-vault-auth-approle.loginapprole
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

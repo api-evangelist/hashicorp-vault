@@ -1,0 +1,188 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: HashiCorp Vault HTTP API — Policy
+  description: 'HashiCorp Vault HTTP API — Policy. 4 operations. Lead operation: List ACL policies. Self-contained Naftiko
+    capability covering one Hashicorp Vault business surface.'
+  tags:
+  - Hashicorp Vault
+  - Policy
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HASHICORP_VAULT_API_KEY: HASHICORP_VAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hashicorp-vault-policy
+    baseUri: https://127.0.0.1:8200/v1
+    description: HashiCorp Vault HTTP API — Policy business capability. Self-contained, no shared references.
+    resources:
+    - name: sys-policies-acl
+      path: /sys/policies/acl
+      operations:
+      - name: listaclpolicies
+        method: GET
+        description: List ACL policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: sys-policies-acl-name
+      path: /sys/policies/acl/{name}
+      operations:
+      - name: getaclpolicy
+        method: GET
+        description: Read an ACL policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: createaclpolicy
+        method: PUT
+        description: Create or update an ACL policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteaclpolicy
+        method: DELETE
+        description: Delete an ACL policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: X-Vault-Token
+      value: '{{env.HASHICORP_VAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: hashicorp-vault-policy-rest
+    port: 8080
+    description: REST adapter for HashiCorp Vault HTTP API — Policy. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/sys/policies/acl
+      name: sys-policies-acl
+      description: REST surface for sys-policies-acl.
+      operations:
+      - method: GET
+        name: listaclpolicies
+        description: List ACL policies
+        call: hashicorp-vault-policy.listaclpolicies
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sys/policies/acl/{name}
+      name: sys-policies-acl-name
+      description: REST surface for sys-policies-acl-name.
+      operations:
+      - method: GET
+        name: getaclpolicy
+        description: Read an ACL policy
+        call: hashicorp-vault-policy.getaclpolicy
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: createaclpolicy
+        description: Create or update an ACL policy
+        call: hashicorp-vault-policy.createaclpolicy
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteaclpolicy
+        description: Delete an ACL policy
+        call: hashicorp-vault-policy.deleteaclpolicy
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hashicorp-vault-policy-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for HashiCorp Vault HTTP API — Policy. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-acl-policies
+      description: List ACL policies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hashicorp-vault-policy.listaclpolicies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-acl-policy
+      description: Read an ACL policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hashicorp-vault-policy.getaclpolicy
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-update-acl-policy
+      description: Create or update an ACL policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: hashicorp-vault-policy.createaclpolicy
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-acl-policy
+      description: Delete an ACL policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: hashicorp-vault-policy.deleteaclpolicy
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.

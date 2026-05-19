@@ -1,0 +1,198 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: HashiCorp Vault HTTP API — Identity
+  description: 'HashiCorp Vault HTTP API — Identity. 4 operations. Lead operation: Create an identity entity. Self-contained
+    Naftiko capability covering one Hashicorp Vault business surface.'
+  tags:
+  - Hashicorp Vault
+  - Identity
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HASHICORP_VAULT_API_KEY: HASHICORP_VAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hashicorp-vault-identity
+    baseUri: https://127.0.0.1:8200/v1
+    description: HashiCorp Vault HTTP API — Identity business capability. Self-contained, no shared references.
+    resources:
+    - name: identity-entity
+      path: /identity/entity
+      operations:
+      - name: createentity
+        method: POST
+        description: Create an identity entity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: identity-entity-id-id
+      path: /identity/entity/id/{id}
+      operations:
+      - name: getentity
+        method: GET
+        description: Read an entity by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updateentity
+        method: POST
+        description: Update an entity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteentity
+        method: DELETE
+        description: Delete an entity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: X-Vault-Token
+      value: '{{env.HASHICORP_VAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: hashicorp-vault-identity-rest
+    port: 8080
+    description: REST adapter for HashiCorp Vault HTTP API — Identity. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/identity/entity
+      name: identity-entity
+      description: REST surface for identity-entity.
+      operations:
+      - method: POST
+        name: createentity
+        description: Create an identity entity
+        call: hashicorp-vault-identity.createentity
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/identity/entity/id/{id}
+      name: identity-entity-id-id
+      description: REST surface for identity-entity-id-id.
+      operations:
+      - method: GET
+        name: getentity
+        description: Read an entity by ID
+        call: hashicorp-vault-identity.getentity
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateentity
+        description: Update an entity
+        call: hashicorp-vault-identity.updateentity
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteentity
+        description: Delete an entity
+        call: hashicorp-vault-identity.deleteentity
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hashicorp-vault-identity-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for HashiCorp Vault HTTP API — Identity. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-identity-entity
+      description: Create an identity entity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hashicorp-vault-identity.createentity
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-entity-id
+      description: Read an entity by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hashicorp-vault-identity.getentity
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-entity
+      description: Update an entity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hashicorp-vault-identity.updateentity
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-entity
+      description: Delete an entity
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: hashicorp-vault-identity.deleteentity
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

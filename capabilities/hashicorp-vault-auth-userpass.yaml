@@ -1,0 +1,88 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: HashiCorp Vault HTTP API — Auth - Userpass
+  description: 'HashiCorp Vault HTTP API — Auth - Userpass. 1 operations. Lead operation: Login with username and password.
+    Self-contained Naftiko capability covering one Hashicorp Vault business surface.'
+  tags:
+  - Hashicorp Vault
+  - Auth - Userpass
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HASHICORP_VAULT_API_KEY: HASHICORP_VAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hashicorp-vault-auth-userpass
+    baseUri: https://127.0.0.1:8200/v1
+    description: HashiCorp Vault HTTP API — Auth - Userpass business capability. Self-contained, no shared references.
+    resources:
+    - name: auth-userpass-login-username
+      path: /auth/userpass/login/{username}
+      operations:
+      - name: loginuserpass
+        method: POST
+        description: Login with username and password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: username
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: X-Vault-Token
+      value: '{{env.HASHICORP_VAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: hashicorp-vault-auth-userpass-rest
+    port: 8080
+    description: REST adapter for HashiCorp Vault HTTP API — Auth - Userpass. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/auth/userpass/login/{username}
+      name: auth-userpass-login-username
+      description: REST surface for auth-userpass-login-username.
+      operations:
+      - method: POST
+        name: loginuserpass
+        description: Login with username and password
+        call: hashicorp-vault-auth-userpass.loginuserpass
+        with:
+          username: rest.username
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hashicorp-vault-auth-userpass-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for HashiCorp Vault HTTP API — Auth - Userpass. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: login-username-and-password
+      description: Login with username and password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hashicorp-vault-auth-userpass.loginuserpass
+      with:
+        username: tools.username
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

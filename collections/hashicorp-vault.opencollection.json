@@ -1,0 +1,1023 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HashiCorp Vault HTTP API",
+    "version": "1.15.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Vault-Token",
+      "value": "{{X-Vault-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check initialization status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/init"
+          },
+          "docs": "Returns the initialization status of Vault."
+        },
+        {
+          "info": {
+            "name": "Initialize Vault",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/init",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initializes a new Vault with the specified number of key shares and threshold."
+        },
+        {
+          "info": {
+            "name": "Check seal status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/seal-status"
+          },
+          "docs": "Returns the seal status of the Vault."
+        },
+        {
+          "info": {
+            "name": "Seal the Vault",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/seal"
+          },
+          "docs": "Seals the Vault. Requires sudo capability."
+        },
+        {
+          "info": {
+            "name": "Submit an unseal key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/unseal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enters a single unseal key share to progress the unsealing of the Vault."
+        },
+        {
+          "info": {
+            "name": "Health status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/health",
+            "params": [
+              {
+                "name": "standbyok",
+                "value": "",
+                "type": "query",
+                "description": "Return 200 for standby nodes too"
+              },
+              {
+                "name": "activecode",
+                "value": "",
+                "type": "query",
+                "description": "Custom status code for active node"
+              },
+              {
+                "name": "standbycode",
+                "value": "",
+                "type": "query",
+                "description": "Custom status code for standby node"
+              },
+              {
+                "name": "sealedcode",
+                "value": "",
+                "type": "query",
+                "description": "Custom status code for sealed node"
+              },
+              {
+                "name": "uninitcode",
+                "value": "",
+                "type": "query",
+                "description": "Custom status code for uninitialized node"
+              }
+            ]
+          },
+          "docs": "Returns the health status of the Vault node including whether it is initialized, sealed, and if it is the active node."
+        },
+        {
+          "info": {
+            "name": "List mounted secrets engines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/mounts"
+          },
+          "docs": "Returns all mounted secrets engines."
+        },
+        {
+          "info": {
+            "name": "Enable a secrets engine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/sys/mounts/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables a new secrets engine at the given path."
+        },
+        {
+          "info": {
+            "name": "Disable a secrets engine",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/sys/mounts/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disables the mount point at the given path."
+        },
+        {
+          "info": {
+            "name": "List auth methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/auth"
+          },
+          "docs": "Returns all enabled auth methods."
+        },
+        {
+          "info": {
+            "name": "Enable an auth method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/sys/auth/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables a new auth method at the given path."
+        },
+        {
+          "info": {
+            "name": "Disable an auth method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/sys/auth/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable an auth method"
+        },
+        {
+          "info": {
+            "name": "List audit devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/audit"
+          },
+          "docs": "List audit devices"
+        },
+        {
+          "info": {
+            "name": "Enable an audit device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/audit/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable an audit device"
+        },
+        {
+          "info": {
+            "name": "Disable an audit device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/sys/audit/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable an audit device"
+        },
+        {
+          "info": {
+            "name": "Read root generation progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/generate-root/attempt"
+          },
+          "docs": "Read root generation progress"
+        },
+        {
+          "info": {
+            "name": "Start root token generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/generate-root/attempt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start root token generation"
+        },
+        {
+          "info": {
+            "name": "Cancel root token generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/sys/generate-root/attempt"
+          },
+          "docs": "Cancel root token generation"
+        },
+        {
+          "info": {
+            "name": "Get leader information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/leader"
+          },
+          "docs": "Returns the high availability status and current leader instance."
+        },
+        {
+          "info": {
+            "name": "Wrap data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/sys/wrapping/wrap",
+            "headers": [
+              {
+                "name": "X-Vault-Wrap-TTL",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wraps the given data in a single-use wrapping token."
+        },
+        {
+          "info": {
+            "name": "Unwrap data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/sys/wrapping/unwrap",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the original response inside the given wrapping token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Policy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List ACL policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/policies/acl"
+          },
+          "docs": "List ACL policies"
+        },
+        {
+          "info": {
+            "name": "Read an ACL policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/policies/acl/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read an ACL policy"
+        },
+        {
+          "info": {
+            "name": "Create or update an ACL policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/policies/acl/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update an ACL policy"
+        },
+        {
+          "info": {
+            "name": "Delete an ACL policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/sys/policies/acl/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an ACL policy"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Leases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup a lease",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/leases/lookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lookup a lease"
+        },
+        {
+          "info": {
+            "name": "Renew a lease",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/leases/renew",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Renew a lease"
+        },
+        {
+          "info": {
+            "name": "Revoke a lease",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/leases/revoke",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revoke a lease"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Auth - Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new token with specified policies and settings."
+        },
+        {
+          "info": {
+            "name": "Lookup a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/lookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns information about the given token."
+        },
+        {
+          "info": {
+            "name": "Lookup own token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/auth/token/lookup-self"
+          },
+          "docs": "Returns information about the current client token."
+        },
+        {
+          "info": {
+            "name": "Renew a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/renew",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Renew a token"
+        },
+        {
+          "info": {
+            "name": "Renew own token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/renew-self",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Renew own token"
+        },
+        {
+          "info": {
+            "name": "Revoke a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/revoke",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revoke a token"
+        },
+        {
+          "info": {
+            "name": "Revoke own token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/revoke-self"
+          },
+          "docs": "Revoke own token"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Auth - Userpass",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Login with username and password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/userpass/login/:username",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Login with username and password"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Auth - AppRole",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Login with AppRole",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/approle/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Login with AppRole"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Secrets - KV v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Read KV secret (v2)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/secret/data/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Specific version to read"
+              }
+            ]
+          },
+          "docs": "Reads a secret from the KV v2 secrets engine at the given path."
+        },
+        {
+          "info": {
+            "name": "Create or update KV secret (v2)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/secret/data/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new version of a secret at the specified path."
+        },
+        {
+          "info": {
+            "name": "Delete latest version of KV secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/secret/data/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete latest version of KV secret"
+        },
+        {
+          "info": {
+            "name": "Read KV secret metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/secret/metadata/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns metadata and version history for the secret at the given path."
+        },
+        {
+          "info": {
+            "name": "Delete all versions and metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/secret/metadata/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Permanently deletes the key metadata and all version data."
+        },
+        {
+          "info": {
+            "name": "Delete specific versions of KV secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/secret/delete/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete specific versions of KV secret"
+        },
+        {
+          "info": {
+            "name": "Undelete versions of KV secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/secret/undelete/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Undelete versions of KV secret"
+        },
+        {
+          "info": {
+            "name": "Permanently destroy versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/secret/destroy/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Permanently removes the data for the specified versions (cannot be recovered)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Secrets - Transit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Encrypt data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/transit/encrypt/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the encryption key"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Encrypts the provided plaintext using the named key."
+        },
+        {
+          "info": {
+            "name": "Decrypt data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/transit/decrypt/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decrypts the provided ciphertext using the named key."
+        },
+        {
+          "info": {
+            "name": "Read an encryption key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/transit/keys/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read an encryption key"
+        },
+        {
+          "info": {
+            "name": "Create an encryption key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/transit/keys/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an encryption key"
+        },
+        {
+          "info": {
+            "name": "Delete an encryption key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/transit/keys/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an encryption key"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Identity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an identity entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/identity/entity",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an identity entity"
+        },
+        {
+          "info": {
+            "name": "Read an entity by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/identity/entity/id/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read an entity by ID"
+        },
+        {
+          "info": {
+            "name": "Update an entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/identity/entity/id/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an entity"
+        },
+        {
+          "info": {
+            "name": "Delete an entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/identity/entity/id/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an entity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

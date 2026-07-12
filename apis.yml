@@ -39,6 +39,10 @@ apis:
       - type: GettingStarted
         url: https://developer.hashicorp.com/vault/tutorials
 common:
+  - type: DomainSecurity
+    url: security/hashicorp-vault-domain-security.yml
+  - type: Authentication
+    url: authentication/hashicorp-vault-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/hashicorp
   - type: Website

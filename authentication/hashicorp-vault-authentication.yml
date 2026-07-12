@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/hashicorp-vault-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: VaultToken
+  type: apiKey
+  in: header
+  parameter: X-Vault-Token
+  description: Vault client token
+  sources:
+  - openapi/hashicorp-vault-openapi.yml

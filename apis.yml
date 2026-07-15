@@ -39,6 +39,8 @@ apis:
       - type: GettingStarted
         url: https://developer.hashicorp.com/vault/tutorials
 common:
+  - type: AgenticAccess
+    url: agentic-access/hashicorp-vault-agentic-access.yml
   - type: DomainSecurity
     url: security/hashicorp-vault-domain-security.yml
   - type: Authentication

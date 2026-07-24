@@ -1,0 +1,188 @@
+openapi: 3.1.0
+info:
+  title: HashiCorp Vault HTTP Auth - AppRole Leases API
+  description: The Vault HTTP API provides full access to Vault functionality via HTTP. Every aspect of Vault can be controlled via this API including secrets management, authentication, system configuration, identity, and policy management.
+  version: 1.15.0
+  contact:
+    name: HashiCorp
+    url: https://www.vaultproject.io/
+  license:
+    name: Business Source License 1.1
+    url: https://github.com/hashicorp/vault/blob/main/LICENSE
+servers:
+- url: https://127.0.0.1:8200/v1
+  description: Local Vault server
+- url: https://{vault_host}:{port}/v1
+  description: Custom Vault server
+  variables:
+    vault_host:
+      default: 127.0.0.1
+    port:
+      default: '8200'
+security:
+- VaultToken: []
+tags:
+- name: Leases
+  description: Lease management
+paths:
+  /sys/leases/lookup:
+    put:
+      operationId: lookupLease
+      summary: Lookup a lease
+      tags:
+      - Leases
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - lease_id
+              properties:
+                lease_id:
+                  type: string
+      responses:
+        '200':
+          description: Lease information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  issue_time:
+                    type: string
+                    format: date-time
+                  expire_time:
+                    type: string
+                    format: date-time
+                  last_renewal:
+                    type: string
+                    format: date-time
+                  renewable:
+                    type: boolean
+                  ttl:
+                    type: integer
+  /sys/leases/renew:
+    put:
+      operationId: renewLease
+      summary: Renew a lease
+      tags:
+      - Leases
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - lease_id
+              properties:
+                lease_id:
+                  type: string
+                increment:
+                  type: integer
+                  description: Requested renewal duration in seconds
+      responses:
+        '200':
+          description: Lease renewed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VaultResponse'
+  /sys/leases/revoke:
+    put:
+      operationId: revokeLease
+      summary: Revoke a lease
+      tags:
+      - Leases
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - lease_id
+              properties:
+                lease_id:
+                  type: string
+      responses:
+        '204':
+          description: Lease revoked
+components:
+  schemas:
+    VaultResponse:
+      type: object
+      properties:
+        request_id:
+          type: string
+        lease_id:
+          type: string
+        renewable:
+          type: boolean
+        lease_duration:
+          type: integer
+        data:
+          type: object
+          additionalProperties: true
+        wrap_info:
+          type: object
+          properties:
+            token:
+              type: string
+            accessor:
+              type: string
+            ttl:
+              type: integer
+            creation_time:
+              type: string
+              format: date-time
+            creation_path:
+              type: string
+            wrapped_accessor:
+              type: string
+          nullable: true
+        warnings:
+          type: array
+          items:
+            type: string
+          nullable: true
+        auth:
+          type: object
+          properties:
+            client_token:
+              type: string
+            accessor:
+              type: string
+            policies:
+              type: array
+              items:
+                type: string
+            token_policies:
+              type: array
+              items:
+                type: string
+            metadata:
+              type: object
+              additionalProperties:
+                type: string
+            lease_duration:
+              type: integer
+            renewable:
+              type: boolean
+            entity_id:
+              type: string
+            token_type:
+              type: string
+            orphan:
+              type: boolean
+          nullable: true
+  securitySchemes:
+    VaultToken:
+      type: apiKey
+      name: X-Vault-Token
+      in: header
+      description: Vault client token

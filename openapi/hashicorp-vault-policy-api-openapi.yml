@@ -1,0 +1,117 @@
+openapi: 3.1.0
+info:
+  title: HashiCorp Vault HTTP Auth - AppRole Policy API
+  description: The Vault HTTP API provides full access to Vault functionality via HTTP. Every aspect of Vault can be controlled via this API including secrets management, authentication, system configuration, identity, and policy management.
+  version: 1.15.0
+  contact:
+    name: HashiCorp
+    url: https://www.vaultproject.io/
+  license:
+    name: Business Source License 1.1
+    url: https://github.com/hashicorp/vault/blob/main/LICENSE
+servers:
+- url: https://127.0.0.1:8200/v1
+  description: Local Vault server
+- url: https://{vault_host}:{port}/v1
+  description: Custom Vault server
+  variables:
+    vault_host:
+      default: 127.0.0.1
+    port:
+      default: '8200'
+security:
+- VaultToken: []
+tags:
+- name: Policy
+  description: ACL policy management
+paths:
+  /sys/policies/acl:
+    get:
+      operationId: listACLPolicies
+      summary: List ACL policies
+      tags:
+      - Policy
+      responses:
+        '200':
+          description: List of policy names
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keys:
+                    type: array
+                    items:
+                      type: string
+  /sys/policies/acl/{name}:
+    get:
+      operationId: getACLPolicy
+      summary: Read an ACL policy
+      tags:
+      - Policy
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Policy details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  policy:
+                    type: string
+                    description: HCL or JSON policy document
+    put:
+      operationId: createACLPolicy
+      summary: Create or update an ACL policy
+      tags:
+      - Policy
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - policy
+              properties:
+                policy:
+                  type: string
+                  description: HCL or JSON policy document
+      responses:
+        '204':
+          description: Policy created/updated
+    delete:
+      operationId: deleteACLPolicy
+      summary: Delete an ACL policy
+      tags:
+      - Policy
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Policy deleted
+components:
+  securitySchemes:
+    VaultToken:
+      type: apiKey
+      name: X-Vault-Token
+      in: header
+      description: Vault client token

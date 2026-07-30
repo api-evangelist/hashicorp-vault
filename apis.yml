@@ -4,6 +4,19 @@ description: >-
   HashiCorp Vault is a secrets management tool that provides secure storage, access control, and distribution of tokens,
   passwords, certificates, and encryption keys. It provides a unified interface to any secret while providing tight
   access control and recording a detailed audit log.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.datocms-assets.com/2885/1620155116-brandhcvaultprimaryattributedcolor.svg
 url: https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/apis.yml
 type: Index
@@ -17,27 +30,150 @@ tags:
   - Secrets Management
   - Security
 apis:
-  - aid: hashicorp-vault:vault-http-api
-    name: HashiCorp Vault HTTP API
-    description: >-
-      The Vault HTTP API provides full access to Vault via HTTP. Every aspect of Vault can be controlled via this API.
-      The Vault CLI uses the HTTP API to access Vault functionality.
-    humanURL: https://developer.hashicorp.com/vault/api-docs
-    baseURL: https://127.0.0.1:8200/v1
-    tags:
-      - Encryption
-      - Secrets Management
-      - Security
-    properties:
-      - type: Documentation
-        url: https://developer.hashicorp.com/vault/api-docs
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/openapi/hashicorp-vault-openapi.yml
-      - type: Authentication
-        url: https://developer.hashicorp.com/vault/docs/auth
-      - type: GettingStarted
-        url: https://developer.hashicorp.com/vault/tutorials
+- aid: hashicorp-vault:hashicorp-vault-auth-approle-api
+  name: HashiCorp Vault Auth - AppRole API
+  description: AppRole auth method
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
+  tags:
+  - Auth - AppRole
+  properties:
+  - type: OpenAPI
+    url: openapi/hashicorp-vault-auth-approle-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: Authentication
+    url: https://developer.hashicorp.com/vault/docs/auth
+  - type: GettingStarted
+    url: https://developer.hashicorp.com/vault/tutorials
+- aid: hashicorp-vault:hashicorp-vault-auth-token-api
+  name: HashiCorp Vault Auth - Token API
+  description: Token auth method
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
+  tags:
+  - Auth - Token
+  properties:
+  - type: OpenAPI
+    url: openapi/hashicorp-vault-auth-token-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: Authentication
+    url: https://developer.hashicorp.com/vault/docs/auth
+  - type: GettingStarted
+    url: https://developer.hashicorp.com/vault/tutorials
+- aid: hashicorp-vault:hashicorp-vault-auth-userpass-api
+  name: HashiCorp Vault Auth - Userpass API
+  description: Username/password auth method
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
+  tags:
+  - Auth - Userpass
+  properties:
+  - type: OpenAPI
+    url: openapi/hashicorp-vault-auth-userpass-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: Authentication
+    url: https://developer.hashicorp.com/vault/docs/auth
+  - type: GettingStarted
+    url: https://developer.hashicorp.com/vault/tutorials
+- aid: hashicorp-vault:hashicorp-vault-identity-api
+  name: HashiCorp Vault Identity API
+  description: Identity secrets engine
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
+  tags:
+  - Identity
+  properties:
+  - type: OpenAPI
+    url: openapi/hashicorp-vault-identity-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: Authentication
+    url: https://developer.hashicorp.com/vault/docs/auth
+  - type: GettingStarted
+    url: https://developer.hashicorp.com/vault/tutorials
+- aid: hashicorp-vault:hashicorp-vault-leases-api
+  name: HashiCorp Vault Leases API
+  description: Lease management
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
+  tags:
+  - Leases
+  properties:
+  - type: OpenAPI
+    url: openapi/hashicorp-vault-leases-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: Authentication
+    url: https://developer.hashicorp.com/vault/docs/auth
+  - type: GettingStarted
+    url: https://developer.hashicorp.com/vault/tutorials
+- aid: hashicorp-vault:hashicorp-vault-policy-api
+  name: HashiCorp Vault Policy API
+  description: ACL policy management
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
+  tags:
+  - Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/hashicorp-vault-policy-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: Authentication
+    url: https://developer.hashicorp.com/vault/docs/auth
+  - type: GettingStarted
+    url: https://developer.hashicorp.com/vault/tutorials
+- aid: hashicorp-vault:hashicorp-vault-secrets-kv-v2-api
+  name: HashiCorp Vault Secrets - KV v2 API
+  description: Key/Value secrets engine version 2
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
+  tags:
+  - Secrets - KV v2
+  properties:
+  - type: OpenAPI
+    url: openapi/hashicorp-vault-secrets-kv-v2-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: Authentication
+    url: https://developer.hashicorp.com/vault/docs/auth
+  - type: GettingStarted
+    url: https://developer.hashicorp.com/vault/tutorials
+- aid: hashicorp-vault:hashicorp-vault-secrets-transit-api
+  name: HashiCorp Vault Secrets - Transit API
+  description: Transit secrets engine (encryption as a service)
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
+  tags:
+  - Secrets - Transit
+  properties:
+  - type: OpenAPI
+    url: openapi/hashicorp-vault-secrets-transit-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: Authentication
+    url: https://developer.hashicorp.com/vault/docs/auth
+  - type: GettingStarted
+    url: https://developer.hashicorp.com/vault/tutorials
+- aid: hashicorp-vault:hashicorp-vault-system-api
+  name: HashiCorp Vault System API
+  description: System backend operations (init, seal, mounts, auth, audit)
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/hashicorp-vault-system-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: Authentication
+    url: https://developer.hashicorp.com/vault/docs/auth
+  - type: GettingStarted
+    url: https://developer.hashicorp.com/vault/tutorials
 common:
   - type: AgenticAccess
     url: agentic-access/hashicorp-vault-agentic-access.yml

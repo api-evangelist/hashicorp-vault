@@ -1,0 +1,30 @@
+{
+  "provider": "hashicorp-vault",
+  "sources": [
+    "hashicorp-vault-auth-approle-api-openapi.yml",
+    "hashicorp-vault-auth-token-api-openapi.yml",
+    "hashicorp-vault-auth-userpass-api-openapi.yml",
+    "hashicorp-vault-identity-api-openapi.yml",
+    "hashicorp-vault-leases-api-openapi.yml",
+    "hashicorp-vault-policy-api-openapi.yml",
+    "hashicorp-vault-secrets-kv-v2-api-openapi.yml",
+    "hashicorp-vault-secrets-transit-api-openapi.yml",
+    "hashicorp-vault-system-api-openapi.yml"
+  ],
+  "outputs": [
+    "hashicorp-vault-auth-approle-api-openapi.yml",
+    "hashicorp-vault-auth-token-api-openapi.yml",
+    "hashicorp-vault-auth-userpass-api-openapi.yml",
+    "hashicorp-vault-identity-api-openapi.yml",
+    "hashicorp-vault-leases-api-openapi.yml",
+    "hashicorp-vault-policy-api-openapi.yml",
+    "hashicorp-vault-secrets-kv-v2-api-openapi.yml",
+    "hashicorp-vault-secrets-transit-api-openapi.yml",
+    "hashicorp-vault-system-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

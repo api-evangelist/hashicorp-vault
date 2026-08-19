@@ -1,0 +1,167 @@
+{
+  "item": [
+    {
+      "id": "20b2c9fe-5cff-435b-9249-a1ce5561b746",
+      "name": "Auth - Userpass",
+      "description": {
+        "content": "Username/password auth method",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "284354d2-e8da-4aa6-9fd0-83d7c0ed6015",
+          "name": "Login with username and password",
+          "request": {
+            "name": "Login with username and password",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "userpass",
+                "login",
+                ":username"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d277d7b2-9d0d-4b5f-b216-77949b0671ee",
+              "name": "Login successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "userpass",
+                    "login",
+                    ":username"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Vault-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"string\",\n  \"lease_id\": \"string\",\n  \"renewable\": true,\n  \"lease_duration\": 3816,\n  \"data\": {\n    \"key_0\": true,\n    \"key_1\": 5152.699146277202\n  },\n  \"wrap_info\": {\n    \"token\": \"string\",\n    \"accessor\": \"string\",\n    \"ttl\": 3443,\n    \"creation_time\": \"2012-10-08T12:56:16.013Z\",\n    \"creation_path\": \"string\",\n    \"wrapped_accessor\": \"string\"\n  },\n  \"warnings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"auth\": {\n    \"client_token\": \"string\",\n    \"accessor\": \"string\",\n    \"policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"token_policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"lease_duration\": 7059,\n    \"renewable\": false,\n    \"entity_id\": \"string\",\n    \"token_type\": \"string\",\n    \"orphan\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://127.0.0.1:8200/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Vault-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e17a33e3-5fe8-4b2b-a7df-5d5b92baffdb",
+    "name": "HashiCorp Vault HTTP Auth - AppRole Auth - Userpass API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Vault HTTP API provides full access to Vault functionality via HTTP. Every aspect of Vault can be controlled via this API including secrets management, authentication, system configuration, identity, and policy management.\n\nContact Support:\n Name: HashiCorp",
+      "type": "text/plain"
+    }
+  }
+}

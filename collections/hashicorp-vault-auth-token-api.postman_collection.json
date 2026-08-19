@@ -1,0 +1,698 @@
+{
+  "item": [
+    {
+      "id": "7ce29cd3-d173-4ef1-bba6-b4bfabe95e30",
+      "name": "Auth - Token",
+      "description": {
+        "content": "Token auth method",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f3e45959-4f08-4e75-b2ce-22ef0657e02f",
+          "name": "Create a token",
+          "request": {
+            "name": "Create a token",
+            "description": {
+              "content": "Creates a new token with specified policies and settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auth",
+                "token",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"policies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"meta\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"no_parent\": \"<boolean>\",\n  \"no_default_policy\": \"<boolean>\",\n  \"renewable\": \"<boolean>\",\n  \"ttl\": \"<string>\",\n  \"explicit_max_ttl\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"num_uses\": \"<integer>\",\n  \"period\": \"<string>\",\n  \"entity_alias\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f1ca2e7-0e33-48f0-bd01-e2db2302deaf",
+              "name": "Token created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "token",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Vault-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"policies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"meta\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"no_parent\": \"<boolean>\",\n  \"no_default_policy\": \"<boolean>\",\n  \"renewable\": \"<boolean>\",\n  \"ttl\": \"<string>\",\n  \"explicit_max_ttl\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"num_uses\": \"<integer>\",\n  \"period\": \"<string>\",\n  \"entity_alias\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"string\",\n  \"lease_id\": \"string\",\n  \"renewable\": true,\n  \"lease_duration\": 6273,\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"wrap_info\": {\n    \"token\": \"string\",\n    \"accessor\": \"string\",\n    \"ttl\": 2767,\n    \"creation_time\": \"1953-09-21T15:22:24.887Z\",\n    \"creation_path\": \"string\",\n    \"wrapped_accessor\": \"string\"\n  },\n  \"warnings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"auth\": {\n    \"client_token\": \"string\",\n    \"accessor\": \"string\",\n    \"policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"token_policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"lease_duration\": 9799,\n    \"renewable\": true,\n    \"entity_id\": \"string\",\n    \"token_type\": \"string\",\n    \"orphan\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e9ca3c2-07a3-47f9-b048-59218b0fbc2c",
+          "name": "Lookup a token",
+          "request": {
+            "name": "Lookup a token",
+            "description": {
+              "content": "Returns information about the given token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auth",
+                "token",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab8e0c5b-8ec4-4bb6-93f2-70f4271d8ea1",
+              "name": "Token information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "token",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Vault-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"string\",\n  \"lease_id\": \"string\",\n  \"renewable\": true,\n  \"lease_duration\": 6273,\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"wrap_info\": {\n    \"token\": \"string\",\n    \"accessor\": \"string\",\n    \"ttl\": 2767,\n    \"creation_time\": \"1953-09-21T15:22:24.887Z\",\n    \"creation_path\": \"string\",\n    \"wrapped_accessor\": \"string\"\n  },\n  \"warnings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"auth\": {\n    \"client_token\": \"string\",\n    \"accessor\": \"string\",\n    \"policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"token_policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"lease_duration\": 9799,\n    \"renewable\": true,\n    \"entity_id\": \"string\",\n    \"token_type\": \"string\",\n    \"orphan\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a36afaca-d08e-4955-9c17-5ee606f57a7b",
+          "name": "Lookup own token",
+          "request": {
+            "name": "Lookup own token",
+            "description": {
+              "content": "Returns information about the current client token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auth",
+                "token",
+                "lookup-self"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0dced3c-c248-4802-bc26-9796b30c2869",
+              "name": "Token information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "token",
+                    "lookup-self"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Vault-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"string\",\n  \"lease_id\": \"string\",\n  \"renewable\": true,\n  \"lease_duration\": 6273,\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"wrap_info\": {\n    \"token\": \"string\",\n    \"accessor\": \"string\",\n    \"ttl\": 2767,\n    \"creation_time\": \"1953-09-21T15:22:24.887Z\",\n    \"creation_path\": \"string\",\n    \"wrapped_accessor\": \"string\"\n  },\n  \"warnings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"auth\": {\n    \"client_token\": \"string\",\n    \"accessor\": \"string\",\n    \"policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"token_policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"lease_duration\": 9799,\n    \"renewable\": true,\n    \"entity_id\": \"string\",\n    \"token_type\": \"string\",\n    \"orphan\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c45c3982-602e-4840-a179-9f35b4072ab9",
+          "name": "Renew a token",
+          "request": {
+            "name": "Renew a token",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "token",
+                "renew"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"increment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16230617-4b22-4a70-8090-f552e381332a",
+              "name": "Token renewed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "token",
+                    "renew"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Vault-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"increment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"string\",\n  \"lease_id\": \"string\",\n  \"renewable\": true,\n  \"lease_duration\": 6273,\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"wrap_info\": {\n    \"token\": \"string\",\n    \"accessor\": \"string\",\n    \"ttl\": 2767,\n    \"creation_time\": \"1953-09-21T15:22:24.887Z\",\n    \"creation_path\": \"string\",\n    \"wrapped_accessor\": \"string\"\n  },\n  \"warnings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"auth\": {\n    \"client_token\": \"string\",\n    \"accessor\": \"string\",\n    \"policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"token_policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"lease_duration\": 9799,\n    \"renewable\": true,\n    \"entity_id\": \"string\",\n    \"token_type\": \"string\",\n    \"orphan\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf32dcc3-af24-418e-89d5-7384228d438f",
+          "name": "Renew own token",
+          "request": {
+            "name": "Renew own token",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "token",
+                "renew-self"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"increment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1626cc7b-66da-48f9-89ba-8034d3d91145",
+              "name": "Token renewed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "token",
+                    "renew-self"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Vault-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"increment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"string\",\n  \"lease_id\": \"string\",\n  \"renewable\": true,\n  \"lease_duration\": 6273,\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"wrap_info\": {\n    \"token\": \"string\",\n    \"accessor\": \"string\",\n    \"ttl\": 2767,\n    \"creation_time\": \"1953-09-21T15:22:24.887Z\",\n    \"creation_path\": \"string\",\n    \"wrapped_accessor\": \"string\"\n  },\n  \"warnings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"auth\": {\n    \"client_token\": \"string\",\n    \"accessor\": \"string\",\n    \"policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"token_policies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"lease_duration\": 9799,\n    \"renewable\": true,\n    \"entity_id\": \"string\",\n    \"token_type\": \"string\",\n    \"orphan\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12c5559e-beb6-43c4-8989-3bd96ed36e9f",
+          "name": "Revoke a token",
+          "request": {
+            "name": "Revoke a token",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "token",
+                "revoke"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5236ab03-4478-44f0-8c66-095b536478bd",
+              "name": "Token revoked",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "token",
+                    "revoke"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Vault-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7c1fa5e-e4a8-453f-8254-7d215f125e18",
+          "name": "Revoke own token",
+          "request": {
+            "name": "Revoke own token",
+            "description": {},
+            "url": {
+              "path": [
+                "auth",
+                "token",
+                "revoke-self"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69c95811-d29e-4687-9509-7f73e40925d3",
+              "name": "Token revoked",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "token",
+                    "revoke-self"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Vault-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://127.0.0.1:8200/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Vault-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ff364ec2-54e4-4ccb-be0a-adc274a6c629",
+    "name": "HashiCorp Vault HTTP Auth - AppRole Auth - Token API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Vault HTTP API provides full access to Vault functionality via HTTP. Every aspect of Vault can be controlled via this API including secrets management, authentication, system configuration, identity, and policy management.\n\nContact Support:\n Name: HashiCorp",
+      "type": "text/plain"
+    }
+  }
+}

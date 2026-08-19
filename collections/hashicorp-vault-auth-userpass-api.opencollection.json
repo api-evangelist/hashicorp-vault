@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HashiCorp Vault HTTP Auth - AppRole Auth - Userpass API",
+    "version": "1.15.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Vault-Token",
+      "value": "{{X-Vault-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth - Userpass",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Login with username and password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/userpass/login/:username",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Login with username and password"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

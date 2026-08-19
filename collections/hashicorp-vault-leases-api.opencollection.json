@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HashiCorp Vault HTTP Auth - AppRole Leases API",
+    "version": "1.15.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Vault-Token",
+      "value": "{{X-Vault-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Leases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup a lease",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/leases/lookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lookup a lease"
+        },
+        {
+          "info": {
+            "name": "Renew a lease",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/leases/renew",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Renew a lease"
+        },
+        {
+          "info": {
+            "name": "Revoke a lease",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/leases/revoke",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revoke a lease"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

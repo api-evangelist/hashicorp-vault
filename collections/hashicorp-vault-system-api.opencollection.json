@@ -1,0 +1,369 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HashiCorp Vault HTTP Auth - AppRole System API",
+    "version": "1.15.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Vault-Token",
+      "value": "{{X-Vault-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check initialization status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/init"
+          },
+          "docs": "Returns the initialization status of Vault."
+        },
+        {
+          "info": {
+            "name": "Initialize Vault",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/init",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initializes a new Vault with the specified number of key shares and threshold."
+        },
+        {
+          "info": {
+            "name": "Check seal status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/seal-status"
+          },
+          "docs": "Returns the seal status of the Vault."
+        },
+        {
+          "info": {
+            "name": "Seal the Vault",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/seal"
+          },
+          "docs": "Seals the Vault. Requires sudo capability."
+        },
+        {
+          "info": {
+            "name": "Submit an unseal key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/unseal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enters a single unseal key share to progress the unsealing of the Vault."
+        },
+        {
+          "info": {
+            "name": "Health status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/health",
+            "params": [
+              {
+                "name": "standbyok",
+                "value": "",
+                "type": "query",
+                "description": "Return 200 for standby nodes too"
+              },
+              {
+                "name": "activecode",
+                "value": "",
+                "type": "query",
+                "description": "Custom status code for active node"
+              },
+              {
+                "name": "standbycode",
+                "value": "",
+                "type": "query",
+                "description": "Custom status code for standby node"
+              },
+              {
+                "name": "sealedcode",
+                "value": "",
+                "type": "query",
+                "description": "Custom status code for sealed node"
+              },
+              {
+                "name": "uninitcode",
+                "value": "",
+                "type": "query",
+                "description": "Custom status code for uninitialized node"
+              }
+            ]
+          },
+          "docs": "Returns the health status of the Vault node including whether it is initialized, sealed, and if it is the active node."
+        },
+        {
+          "info": {
+            "name": "List mounted secrets engines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/mounts"
+          },
+          "docs": "Returns all mounted secrets engines."
+        },
+        {
+          "info": {
+            "name": "Enable a secrets engine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/sys/mounts/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables a new secrets engine at the given path."
+        },
+        {
+          "info": {
+            "name": "Disable a secrets engine",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/sys/mounts/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disables the mount point at the given path."
+        },
+        {
+          "info": {
+            "name": "List auth methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/auth"
+          },
+          "docs": "Returns all enabled auth methods."
+        },
+        {
+          "info": {
+            "name": "Enable an auth method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/sys/auth/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables a new auth method at the given path."
+        },
+        {
+          "info": {
+            "name": "Disable an auth method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/sys/auth/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable an auth method"
+        },
+        {
+          "info": {
+            "name": "List audit devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/audit"
+          },
+          "docs": "List audit devices"
+        },
+        {
+          "info": {
+            "name": "Enable an audit device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/audit/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable an audit device"
+        },
+        {
+          "info": {
+            "name": "Disable an audit device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/sys/audit/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable an audit device"
+        },
+        {
+          "info": {
+            "name": "Read root generation progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/generate-root/attempt"
+          },
+          "docs": "Read root generation progress"
+        },
+        {
+          "info": {
+            "name": "Start root token generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://127.0.0.1:8200/v1/sys/generate-root/attempt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start root token generation"
+        },
+        {
+          "info": {
+            "name": "Cancel root token generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://127.0.0.1:8200/v1/sys/generate-root/attempt"
+          },
+          "docs": "Cancel root token generation"
+        },
+        {
+          "info": {
+            "name": "Get leader information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/sys/leader"
+          },
+          "docs": "Returns the high availability status and current leader instance."
+        },
+        {
+          "info": {
+            "name": "Wrap data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/sys/wrapping/wrap",
+            "headers": [
+              {
+                "name": "X-Vault-Wrap-TTL",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wraps the given data in a single-use wrapping token."
+        },
+        {
+          "info": {
+            "name": "Unwrap data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/sys/wrapping/unwrap",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the original response inside the given wrapping token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HashiCorp Vault HTTP Auth - AppRole Auth - Token API",
+    "version": "1.15.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Vault-Token",
+      "value": "{{X-Vault-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth - Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new token with specified policies and settings."
+        },
+        {
+          "info": {
+            "name": "Lookup a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/lookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns information about the given token."
+        },
+        {
+          "info": {
+            "name": "Lookup own token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://127.0.0.1:8200/v1/auth/token/lookup-self"
+          },
+          "docs": "Returns information about the current client token."
+        },
+        {
+          "info": {
+            "name": "Renew a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/renew",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Renew a token"
+        },
+        {
+          "info": {
+            "name": "Renew own token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/renew-self",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Renew own token"
+        },
+        {
+          "info": {
+            "name": "Revoke a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/revoke",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revoke a token"
+        },
+        {
+          "info": {
+            "name": "Revoke own token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://127.0.0.1:8200/v1/auth/token/revoke-self"
+          },
+          "docs": "Revoke own token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

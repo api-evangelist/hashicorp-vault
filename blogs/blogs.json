@@ -5,14 +5,14 @@
       "source": "https://www.hashicorp.com/blog/feed.xml",
       "feed_url": "https://www.hashicorp.com/blog/feed.xml",
       "title": "",
-      "saved": 1,
+      "saved": 0,
       "method": "feed"
     },
     {
       "source": "https://status.hashicorp.com/feed.rss",
       "feed_url": "https://status.hashicorp.com/feed.rss",
       "title": "",
-      "saved": 2,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -23,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 94,
-  "fetched": "2026-08-15T12:11:08Z"
+  "post_count": 96,
+  "fetched": "2026-08-22T20:20:02Z"
 }

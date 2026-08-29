@@ -4,6 +4,18 @@ description: >-
   HashiCorp Vault is a secrets management tool that provides secure storage, access control, and distribution of tokens,
   passwords, certificates, and encryption keys. It provides a unified interface to any secret while providing tight
   access control and recording a detailed audit log.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve

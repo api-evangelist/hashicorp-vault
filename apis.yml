@@ -29,7 +29,8 @@ accessModel:
   - plans
   - authentication
   - security
-  generated: '2026-08-26'
+  - {url: 'https://www.vaultproject.io/', status: 308, note: 'declared website redirects to https://developer.hashicorp.com/vault — a different registrable domain (vaultproject.io -> hashicorp.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
+  generated: '2026-09-03'
   method: derived
 image: https://www.datocms-assets.com/2885/1620155116-brandhcvaultprimaryattributedcolor.svg
 url: https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/apis.yml

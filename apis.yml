@@ -1,9 +1,6 @@
 aid: hashicorp-vault
 name: HashiCorp Vault
-description: >-
-  HashiCorp Vault is a secrets management tool that provides secure storage, access control, and distribution of tokens,
-  passwords, certificates, and encryption keys. It provides a unified interface to any secret while providing tight
-  access control and recording a detailed audit log.
+description: HashiCorp Vault is a secrets management tool that provides secure storage, access control, and distribution of tokens, passwords, certificates, and encryption keys. It provides a unified interface to any secret while providing tight access control and recording a detailed audit log.
 deliveryModel:
   model: saas
   open_source: false
@@ -29,7 +26,9 @@ accessModel:
   - plans
   - authentication
   - security
-  - {url: 'https://www.vaultproject.io/', status: 308, note: 'declared website redirects to https://developer.hashicorp.com/vault — a different registrable domain (vaultproject.io -> hashicorp.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
+  - url: https://www.vaultproject.io/
+    status: 308
+    note: declared website redirects to https://developer.hashicorp.com/vault — a different registrable domain (vaultproject.io -> hashicorp.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)
   generated: '2026-09-03'
   method: derived
 image: https://www.datocms-assets.com/2885/1620155116-brandhcvaultprimaryattributedcolor.svg
@@ -39,11 +38,11 @@ created: '2024-01-15'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 tags:
-  - DevOps
-  - Encryption
-  - Infrastructure
-  - Secrets Management
-  - Security
+- DevOps
+- Encryption
+- Infrastructure
+- Secrets Management
+- Security
 apis:
 - aid: hashicorp-vault:hashicorp-vault-auth-approle-api
   name: HashiCorp Vault Auth - AppRole API
@@ -189,37 +188,279 @@ apis:
     url: https://developer.hashicorp.com/vault/docs/auth
   - type: GettingStarted
     url: https://developer.hashicorp.com/vault/tutorials
-common:
-  - type: AgenticAccess
-    url: agentic-access/hashicorp-vault-agentic-access.yml
-  - type: DomainSecurity
-    url: security/hashicorp-vault-domain-security.yml
-  - type: Authentication
-    url: authentication/hashicorp-vault-authentication.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/hashicorp
-  - type: Website
-    url: https://www.vaultproject.io/
+- aid: hashicorp-vault:vault-api
+  name: Vault HTTP API
+  description: The complete Vault HTTP API gives full access to all Vault operations via REST. Includes authentication method APIs (AppRole, LDAP, JWT, Kubernetes, AWS, Azure), secrets engine APIs (Database, AWS, PKI, SSH, Transit), and the system backend. The OpenAPI spec is dynamically generated from a running Vault instance at /v1/sys/internal/specs/openapi.
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://vault.example.com/v1
+  tags:
+  - Auth Methods
+  - Dynamic Secrets
+  - Secrets Management
+  properties:
   - type: Documentation
-    url: https://developer.hashicorp.com/vault/docs
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: Authentication
+    url: https://developer.hashicorp.com/vault/docs/auth
   - type: GettingStarted
-    url: https://developer.hashicorp.com/vault/tutorials
-  - type: Support
-    url: https://support.hashicorp.com
-  - type: StatusPage
-    url: https://status.hashicorp.com
-  - type: Blog
-    url: https://www.hashicorp.com/blog
-  - type: Pricing
-    url: https://www.hashicorp.com/products/vault/pricing
-  - type: TermsOfService
-    url: https://www.hashicorp.com/terms-of-service
-  - type: PrivacyPolicy
-    url: https://www.hashicorp.com/privacy
-  - type: GitHubOrganization
-    url: https://github.com/hashicorp/vault
-  - type: SDKs
-    url: https://developer.hashicorp.com/vault/docs/libraries
+    url: https://developer.hashicorp.com/vault/tutorials/get-started
+  - type: ChangeLog
+    url: https://github.com/hashicorp/vault/blob/main/CHANGELOG.md
+- aid: hashicorp-vault:vault-auth-methods-api
+  name: HashiCorp Vault Auth Methods API
+  description: Enable, disable, list, and configure authentication methods.
+  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  baseURL: https://vault.example.com/v1
+  tags:
+  - Auth Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/vault-auth-methods-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-request-schema.json
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-kv-secret-data-request-structure.json
+  - type: Examples
+    url: examples/vault-kv-secret-data-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-kv-context.jsonld
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: JSONSchema
+    url: json-schema/vault-sys-health-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-sys-health-response-structure.json
+  - type: Examples
+    url: examples/vault-sys-health-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-sys-context.jsonld
+- aid: hashicorp-vault:vault-health-api
+  name: HashiCorp Vault Health API
+  description: Check Vault health and initialization status.
+  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  baseURL: https://vault.example.com/v1
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/vault-health-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-request-schema.json
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-kv-secret-data-request-structure.json
+  - type: Examples
+    url: examples/vault-kv-secret-data-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-kv-context.jsonld
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: JSONSchema
+    url: json-schema/vault-sys-health-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-sys-health-response-structure.json
+  - type: Examples
+    url: examples/vault-sys-health-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-sys-context.jsonld
+- aid: hashicorp-vault:vault-policies-api
+  name: HashiCorp Vault Policies API
+  description: Create, read, update, delete, and list ACL policies.
+  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  baseURL: https://vault.example.com/v1
+  tags:
+  - Policies
+  properties:
+  - type: OpenAPI
+    url: openapi/vault-policies-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-request-schema.json
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-kv-secret-data-request-structure.json
+  - type: Examples
+    url: examples/vault-kv-secret-data-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-kv-context.jsonld
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: JSONSchema
+    url: json-schema/vault-sys-health-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-sys-health-response-structure.json
+  - type: Examples
+    url: examples/vault-sys-health-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-sys-context.jsonld
+- aid: hashicorp-vault:vault-secrets-config-api
+  name: HashiCorp Vault Secrets Config API
+  description: Configure KV v2 engine settings such as max versions and CAS required.
+  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  baseURL: https://vault.example.com/v1
+  tags:
+  - Secrets Config
+  properties:
+  - type: OpenAPI
+    url: openapi/vault-secrets-config-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-request-schema.json
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-kv-secret-data-request-structure.json
+  - type: Examples
+    url: examples/vault-kv-secret-data-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-kv-context.jsonld
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: JSONSchema
+    url: json-schema/vault-sys-health-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-sys-health-response-structure.json
+  - type: Examples
+    url: examples/vault-sys-health-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-sys-context.jsonld
+- aid: hashicorp-vault:vault-secrets-data-api
+  name: HashiCorp Vault Secrets Data API
+  description: Read, write, patch, and delete secret data versions in the KV v2 engine.
+  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  baseURL: https://vault.example.com/v1
+  tags:
+  - Secrets Data
+  properties:
+  - type: OpenAPI
+    url: openapi/vault-secrets-data-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-request-schema.json
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-kv-secret-data-request-structure.json
+  - type: Examples
+    url: examples/vault-kv-secret-data-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-kv-context.jsonld
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: JSONSchema
+    url: json-schema/vault-sys-health-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-sys-health-response-structure.json
+  - type: Examples
+    url: examples/vault-sys-health-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-sys-context.jsonld
+- aid: hashicorp-vault:vault-secrets-engines-api
+  name: HashiCorp Vault Secrets Engines API
+  description: Mount, unmount, list, and configure secrets engines.
+  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  baseURL: https://vault.example.com/v1
+  tags:
+  - Secrets Engines
+  properties:
+  - type: OpenAPI
+    url: openapi/vault-secrets-engines-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-request-schema.json
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-kv-secret-data-request-structure.json
+  - type: Examples
+    url: examples/vault-kv-secret-data-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-kv-context.jsonld
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: JSONSchema
+    url: json-schema/vault-sys-health-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-sys-health-response-structure.json
+  - type: Examples
+    url: examples/vault-sys-health-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-sys-context.jsonld
+- aid: hashicorp-vault:vault-secrets-metadata-api
+  name: HashiCorp Vault Secrets Metadata API
+  description: Manage metadata and version history for KV v2 secrets.
+  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  baseURL: https://vault.example.com/v1
+  tags:
+  - Secrets Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/vault-secrets-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-request-schema.json
+  - type: JSONSchema
+    url: json-schema/vault-kv-secret-data-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-kv-secret-data-request-structure.json
+  - type: Examples
+    url: examples/vault-kv-secret-data-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-kv-context.jsonld
+  - type: Documentation
+    url: https://developer.hashicorp.com/vault/api-docs
+  - type: JSONSchema
+    url: json-schema/vault-sys-health-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vault-sys-health-response-structure.json
+  - type: Examples
+    url: examples/vault-sys-health-response-example.json
+  - type: JSONLD
+    url: json-ld/vault-sys-context.jsonld
+common:
+- type: AgenticAccess
+  url: agentic-access/hashicorp-vault-agentic-access.yml
+- type: DomainSecurity
+  url: security/hashicorp-vault-domain-security.yml
+- type: Authentication
+  url: authentication/hashicorp-vault-authentication.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/hashicorp
+- type: Website
+  url: https://www.vaultproject.io/
+- type: Documentation
+  url: https://developer.hashicorp.com/vault/docs
+- type: GettingStarted
+  url: https://developer.hashicorp.com/vault/tutorials
+- type: Support
+  url: https://support.hashicorp.com
+- type: StatusPage
+  url: https://status.hashicorp.com
+- type: Blog
+  url: https://www.hashicorp.com/blog
+- type: Pricing
+  url: https://www.hashicorp.com/products/vault/pricing
+- type: TermsOfService
+  url: https://www.hashicorp.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.hashicorp.com/privacy
+- type: GitHubOrganization
+  url: https://github.com/hashicorp/vault
+- type: SDKs
+  url: https://developer.hashicorp.com/vault/docs/libraries
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

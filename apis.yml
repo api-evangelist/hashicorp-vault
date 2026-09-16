@@ -190,7 +190,11 @@ apis:
     url: https://developer.hashicorp.com/vault/tutorials
 - aid: hashicorp-vault:vault-api
   name: Vault HTTP API
-  description: The complete Vault HTTP API gives full access to all Vault operations via REST. Includes authentication method APIs (AppRole, LDAP, JWT, Kubernetes, AWS, Azure), secrets engine APIs (Database, AWS, PKI, SSH, Transit), and the system backend. The OpenAPI spec is dynamically generated from a running Vault instance at /v1/sys/internal/specs/openapi.
+  description: >-
+    The complete Vault HTTP API gives full access to all Vault operations via REST. Includes authentication
+    method APIs (AppRole, LDAP, JWT, Kubernetes, AWS, Azure), secrets engine APIs (Database, AWS, PKI,
+    SSH, Transit), and the system backend. The OpenAPI spec is dynamically generated from a running Vault
+    instance at /v1/sys/internal/specs/openapi.
   humanURL: https://developer.hashicorp.com/vault/api-docs
   baseURL: https://vault.example.com/v1
   tags:
@@ -206,80 +210,16 @@ apis:
     url: https://developer.hashicorp.com/vault/tutorials/get-started
   - type: ChangeLog
     url: https://github.com/hashicorp/vault/blob/main/CHANGELOG.md
-- aid: hashicorp-vault:vault-auth-methods-api
-  name: HashiCorp Vault Auth Methods API
-  description: Enable, disable, list, and configure authentication methods.
-  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
-  baseURL: https://vault.example.com/v1
-  tags:
-  - Auth Methods
-  properties:
-  - type: OpenAPI
-    url: openapi/vault-auth-methods-api-openapi.yml
-  - type: Documentation
-    url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
-  - type: JSONSchema
-    url: json-schema/vault-kv-secret-data-request-schema.json
-  - type: JSONSchema
-    url: json-schema/vault-kv-secret-data-response-schema.json
-  - type: JSONStructure
-    url: json-structure/vault-kv-secret-data-request-structure.json
-  - type: Examples
-    url: examples/vault-kv-secret-data-response-example.json
-  - type: JSONLD
-    url: json-ld/vault-kv-context.jsonld
-  - type: Documentation
-    url: https://developer.hashicorp.com/vault/api-docs
-  - type: JSONSchema
-    url: json-schema/vault-sys-health-response-schema.json
-  - type: JSONStructure
-    url: json-structure/vault-sys-health-response-structure.json
-  - type: Examples
-    url: examples/vault-sys-health-response-example.json
-  - type: JSONLD
-    url: json-ld/vault-sys-context.jsonld
-- aid: hashicorp-vault:vault-health-api
-  name: HashiCorp Vault Health API
-  description: Check Vault health and initialization status.
-  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
-  baseURL: https://vault.example.com/v1
-  tags:
-  - Health
-  properties:
-  - type: OpenAPI
-    url: openapi/vault-health-api-openapi.yml
-  - type: Documentation
-    url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
-  - type: JSONSchema
-    url: json-schema/vault-kv-secret-data-request-schema.json
-  - type: JSONSchema
-    url: json-schema/vault-kv-secret-data-response-schema.json
-  - type: JSONStructure
-    url: json-structure/vault-kv-secret-data-request-structure.json
-  - type: Examples
-    url: examples/vault-kv-secret-data-response-example.json
-  - type: JSONLD
-    url: json-ld/vault-kv-context.jsonld
-  - type: Documentation
-    url: https://developer.hashicorp.com/vault/api-docs
-  - type: JSONSchema
-    url: json-schema/vault-sys-health-response-schema.json
-  - type: JSONStructure
-    url: json-structure/vault-sys-health-response-structure.json
-  - type: Examples
-    url: examples/vault-sys-health-response-example.json
-  - type: JSONLD
-    url: json-ld/vault-sys-context.jsonld
-- aid: hashicorp-vault:vault-policies-api
+- aid: hashicorp-vault:hashicorp-vault-policies-api
   name: HashiCorp Vault Policies API
   description: Create, read, update, delete, and list ACL policies.
-  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
-  baseURL: https://vault.example.com/v1
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
   tags:
   - Policies
   properties:
   - type: OpenAPI
-    url: openapi/vault-policies-api-openapi.yml
+    url: openapi/hashicorp-vault-policies-api-openapi.yml
   - type: Documentation
     url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
   - type: JSONSchema
@@ -302,16 +242,16 @@ apis:
     url: examples/vault-sys-health-response-example.json
   - type: JSONLD
     url: json-ld/vault-sys-context.jsonld
-- aid: hashicorp-vault:vault-secrets-config-api
+- aid: hashicorp-vault:hashicorp-vault-secrets-config-api
   name: HashiCorp Vault Secrets Config API
   description: Configure KV v2 engine settings such as max versions and CAS required.
-  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
-  baseURL: https://vault.example.com/v1
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
   tags:
   - Secrets Config
   properties:
   - type: OpenAPI
-    url: openapi/vault-secrets-config-api-openapi.yml
+    url: openapi/hashicorp-vault-secrets-config-api-openapi.yml
   - type: Documentation
     url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
   - type: JSONSchema
@@ -334,16 +274,16 @@ apis:
     url: examples/vault-sys-health-response-example.json
   - type: JSONLD
     url: json-ld/vault-sys-context.jsonld
-- aid: hashicorp-vault:vault-secrets-data-api
+- aid: hashicorp-vault:hashicorp-vault-secrets-data-api
   name: HashiCorp Vault Secrets Data API
   description: Read, write, patch, and delete secret data versions in the KV v2 engine.
-  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
-  baseURL: https://vault.example.com/v1
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
   tags:
   - Secrets Data
   properties:
   - type: OpenAPI
-    url: openapi/vault-secrets-data-api-openapi.yml
+    url: openapi/hashicorp-vault-secrets-data-api-openapi.yml
   - type: Documentation
     url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
   - type: JSONSchema
@@ -366,48 +306,16 @@ apis:
     url: examples/vault-sys-health-response-example.json
   - type: JSONLD
     url: json-ld/vault-sys-context.jsonld
-- aid: hashicorp-vault:vault-secrets-engines-api
-  name: HashiCorp Vault Secrets Engines API
-  description: Mount, unmount, list, and configure secrets engines.
-  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
-  baseURL: https://vault.example.com/v1
-  tags:
-  - Secrets Engines
-  properties:
-  - type: OpenAPI
-    url: openapi/vault-secrets-engines-api-openapi.yml
-  - type: Documentation
-    url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
-  - type: JSONSchema
-    url: json-schema/vault-kv-secret-data-request-schema.json
-  - type: JSONSchema
-    url: json-schema/vault-kv-secret-data-response-schema.json
-  - type: JSONStructure
-    url: json-structure/vault-kv-secret-data-request-structure.json
-  - type: Examples
-    url: examples/vault-kv-secret-data-response-example.json
-  - type: JSONLD
-    url: json-ld/vault-kv-context.jsonld
-  - type: Documentation
-    url: https://developer.hashicorp.com/vault/api-docs
-  - type: JSONSchema
-    url: json-schema/vault-sys-health-response-schema.json
-  - type: JSONStructure
-    url: json-structure/vault-sys-health-response-structure.json
-  - type: Examples
-    url: examples/vault-sys-health-response-example.json
-  - type: JSONLD
-    url: json-ld/vault-sys-context.jsonld
-- aid: hashicorp-vault:vault-secrets-metadata-api
+- aid: hashicorp-vault:hashicorp-vault-secrets-metadata-api
   name: HashiCorp Vault Secrets Metadata API
   description: Manage metadata and version history for KV v2 secrets.
-  humanURL: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
-  baseURL: https://vault.example.com/v1
+  humanURL: https://developer.hashicorp.com/vault/api-docs
+  baseURL: https://127.0.0.1:8200/v1
   tags:
   - Secrets Metadata
   properties:
   - type: OpenAPI
-    url: openapi/vault-secrets-metadata-api-openapi.yml
+    url: openapi/hashicorp-vault-secrets-metadata-api-openapi.yml
   - type: Documentation
     url: https://developer.hashicorp.com/vault/api-docs/secret/kv/kv-v2
   - type: JSONSchema

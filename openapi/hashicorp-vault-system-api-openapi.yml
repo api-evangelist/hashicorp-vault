@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: HashiCorp Vault HTTP Auth - AppRole System API
+  title: HashiCorp Vault HTTP System API
   description: The Vault HTTP API provides full access to Vault functionality via HTTP. Every aspect of Vault can be controlled via this API including secrets management, authentication, system configuration, identity, and policy management.
   version: 1.15.0
   contact:
@@ -546,32 +546,6 @@ paths:
                 $ref: '#/components/schemas/VaultResponse'
 components:
   schemas:
-    MountConfig:
-      type: object
-      properties:
-        type:
-          type: string
-        description:
-          type: string
-        accessor:
-          type: string
-        config:
-          type: object
-          properties:
-            default_lease_ttl:
-              type: integer
-            max_lease_ttl:
-              type: integer
-            force_no_cache:
-              type: boolean
-        options:
-          type: object
-        local:
-          type: boolean
-        seal_wrap:
-          type: boolean
-        external_entropy_access:
-          type: boolean
     VaultResponse:
       type: object
       properties:
@@ -638,6 +612,55 @@ components:
             orphan:
               type: boolean
           nullable: true
+    MountConfig:
+      type: object
+      properties:
+        type:
+          type: string
+        description:
+          type: string
+        accessor:
+          type: string
+        config:
+          type: object
+          properties:
+            default_lease_ttl:
+              type: integer
+            max_lease_ttl:
+              type: integer
+            force_no_cache:
+              type: boolean
+        options:
+          type: object
+        local:
+          type: boolean
+        seal_wrap:
+          type: boolean
+        external_entropy_access:
+          type: boolean
+    HealthStatus:
+      type: object
+      properties:
+        initialized:
+          type: boolean
+        sealed:
+          type: boolean
+        standby:
+          type: boolean
+        performance_standby:
+          type: boolean
+        replication_performance_mode:
+          type: string
+        replication_dr_mode:
+          type: string
+        server_time_utc:
+          type: integer
+        version:
+          type: string
+        cluster_name:
+          type: string
+        cluster_id:
+          type: string
     SealStatus:
       type: object
       properties:
@@ -670,29 +693,6 @@ components:
         recovery_seal:
           type: boolean
         storage_type:
-          type: string
-    HealthStatus:
-      type: object
-      properties:
-        initialized:
-          type: boolean
-        sealed:
-          type: boolean
-        standby:
-          type: boolean
-        performance_standby:
-          type: boolean
-        replication_performance_mode:
-          type: string
-        replication_dr_mode:
-          type: string
-        server_time_utc:
-          type: integer
-        version:
-          type: string
-        cluster_name:
-          type: string
-        cluster_id:
           type: string
   securitySchemes:
     VaultToken:

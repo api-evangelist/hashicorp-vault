@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: HashiCorp Vault HTTP Auth - AppRole Leases API
+  title: HashiCorp Vault HTTP Leases API
   description: The Vault HTTP API provides full access to Vault functionality via HTTP. Every aspect of Vault can be controlled via this API including secrets management, authentication, system configuration, identity, and policy management.
   version: 1.15.0
   contact:

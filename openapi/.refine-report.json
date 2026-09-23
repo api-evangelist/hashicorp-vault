@@ -1,15 +1,11 @@
 {
   "provider": "hashicorp-vault",
   "sources": [
-    "hashicorp-vault-auth-approle-api-openapi.yml",
-    "hashicorp-vault-auth-token-api-openapi.yml",
-    "hashicorp-vault-auth-userpass-api-openapi.yml",
-    "hashicorp-vault-identity-api-openapi.yml",
-    "hashicorp-vault-leases-api-openapi.yml",
-    "hashicorp-vault-policy-api-openapi.yml",
-    "hashicorp-vault-secrets-kv-v2-api-openapi.yml",
-    "hashicorp-vault-secrets-transit-api-openapi.yml",
-    "hashicorp-vault-system-api-openapi.yml"
+    "_original/hashicorp-vault-openapi.yml",
+    "_original/vault-policies-api-openapi.yml",
+    "_original/vault-secrets-config-api-openapi.yml",
+    "_original/vault-secrets-data-api-openapi.yml",
+    "_original/vault-secrets-metadata-api-openapi.yml"
   ],
   "outputs": [
     "hashicorp-vault-auth-approle-api-openapi.yml",
@@ -20,11 +16,37 @@
     "hashicorp-vault-policy-api-openapi.yml",
     "hashicorp-vault-secrets-kv-v2-api-openapi.yml",
     "hashicorp-vault-secrets-transit-api-openapi.yml",
-    "hashicorp-vault-system-api-openapi.yml"
+    "hashicorp-vault-system-api-openapi.yml",
+    "hashicorp-vault-policies-api-openapi.yml",
+    "hashicorp-vault-secrets-config-api-openapi.yml",
+    "hashicorp-vault-secrets-data-api-openapi.yml",
+    "hashicorp-vault-secrets-metadata-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "3 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (5 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "hashicorp-vault-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/vault-secrets-engines-api-openapi.yml: archived document superseded by a larger archived document",
+    "_original/vault-health-api-openapi.yml: archived document superseded by a larger archived document",
+    "_original/vault-auth-methods-api-openapi.yml: archived document superseded by a larger archived document",
+    "hashicorp-vault-auth-approle-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-auth-token-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-auth-userpass-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-identity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-leases-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-policies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-policy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-secrets-config-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-secrets-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-secrets-kv-v2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-secrets-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-secrets-transit-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hashicorp-vault-system-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

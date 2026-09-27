@@ -167,16 +167,6 @@ components:
               - default
               - root
               - dev-policy
-    VaultError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-          description: List of error messages.
-          example:
-          - permission denied
     PolicyResponse:
       type: object
       properties:
@@ -191,6 +181,16 @@ components:
               type: string
               description: HCL policy document.
               example: path "secret/*" { capabilities = ["read"] }
+    VaultError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+          description: List of error messages.
+          example:
+          - permission denied
     PolicyRequest:
       type: object
       required:

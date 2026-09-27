@@ -612,6 +612,39 @@ components:
             orphan:
               type: boolean
           nullable: true
+    SealStatus:
+      type: object
+      properties:
+        type:
+          type: string
+        initialized:
+          type: boolean
+        sealed:
+          type: boolean
+        t:
+          type: integer
+          description: Threshold
+        n:
+          type: integer
+          description: Number of shares
+        progress:
+          type: integer
+        nonce:
+          type: string
+        version:
+          type: string
+        build_date:
+          type: string
+        migration:
+          type: boolean
+        cluster_name:
+          type: string
+        cluster_id:
+          type: string
+        recovery_seal:
+          type: boolean
+        storage_type:
+          type: string
     MountConfig:
       type: object
       properties:
@@ -660,39 +693,6 @@ components:
         cluster_name:
           type: string
         cluster_id:
-          type: string
-    SealStatus:
-      type: object
-      properties:
-        type:
-          type: string
-        initialized:
-          type: boolean
-        sealed:
-          type: boolean
-        t:
-          type: integer
-          description: Threshold
-        n:
-          type: integer
-          description: Number of shares
-        progress:
-          type: integer
-        nonce:
-          type: string
-        version:
-          type: string
-        build_date:
-          type: string
-        migration:
-          type: boolean
-        cluster_name:
-          type: string
-        cluster_id:
-          type: string
-        recovery_seal:
-          type: boolean
-        storage_type:
           type: string
   securitySchemes:
     VaultToken:

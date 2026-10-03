@@ -612,6 +612,55 @@ components:
             orphan:
               type: boolean
           nullable: true
+    HealthStatus:
+      type: object
+      properties:
+        initialized:
+          type: boolean
+        sealed:
+          type: boolean
+        standby:
+          type: boolean
+        performance_standby:
+          type: boolean
+        replication_performance_mode:
+          type: string
+        replication_dr_mode:
+          type: string
+        server_time_utc:
+          type: integer
+        version:
+          type: string
+        cluster_name:
+          type: string
+        cluster_id:
+          type: string
+    MountConfig:
+      type: object
+      properties:
+        type:
+          type: string
+        description:
+          type: string
+        accessor:
+          type: string
+        config:
+          type: object
+          properties:
+            default_lease_ttl:
+              type: integer
+            max_lease_ttl:
+              type: integer
+            force_no_cache:
+              type: boolean
+        options:
+          type: object
+        local:
+          type: boolean
+        seal_wrap:
+          type: boolean
+        external_entropy_access:
+          type: boolean
     SealStatus:
       type: object
       properties:
@@ -644,55 +693,6 @@ components:
         recovery_seal:
           type: boolean
         storage_type:
-          type: string
-    MountConfig:
-      type: object
-      properties:
-        type:
-          type: string
-        description:
-          type: string
-        accessor:
-          type: string
-        config:
-          type: object
-          properties:
-            default_lease_ttl:
-              type: integer
-            max_lease_ttl:
-              type: integer
-            force_no_cache:
-              type: boolean
-        options:
-          type: object
-        local:
-          type: boolean
-        seal_wrap:
-          type: boolean
-        external_entropy_access:
-          type: boolean
-    HealthStatus:
-      type: object
-      properties:
-        initialized:
-          type: boolean
-        sealed:
-          type: boolean
-        standby:
-          type: boolean
-        performance_standby:
-          type: boolean
-        replication_performance_mode:
-          type: string
-        replication_dr_mode:
-          type: string
-        server_time_utc:
-          type: integer
-        version:
-          type: string
-        cluster_name:
-          type: string
-        cluster_id:
           type: string
   securitySchemes:
     VaultToken:

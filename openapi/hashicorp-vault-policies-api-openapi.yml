@@ -151,7 +151,25 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    PolicyName:
+      name: name
+      in: path
+      required: true
+      description: Name of the policy.
+      schema:
+        type: string
+        example: dev-policy
   schemas:
+    PolicyRequest:
+      type: object
+      required:
+      - policy
+      properties:
+        policy:
+          type: string
+          description: HCL policy document defining path-based access rules. Capabilities include create, read, update, delete, list, and sudo.
+          example: path "secret/data/myapp/*" { capabilities = ["create", "read", "update"] }
     PoliciesListResponse:
       type: object
       properties:
@@ -167,6 +185,16 @@ components:
               - default
               - root
               - dev-policy
+    VaultError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+          description: List of error messages.
+          example:
+          - permission denied
     PolicyResponse:
       type: object
       properties:
@@ -181,34 +209,6 @@ components:
               type: string
               description: HCL policy document.
               example: path "secret/*" { capabilities = ["read"] }
-    VaultError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-          description: List of error messages.
-          example:
-          - permission denied
-    PolicyRequest:
-      type: object
-      required:
-      - policy
-      properties:
-        policy:
-          type: string
-          description: HCL policy document defining path-based access rules. Capabilities include create, read, update, delete, list, and sudo.
-          example: path "secret/data/myapp/*" { capabilities = ["create", "read", "update"] }
-  parameters:
-    PolicyName:
-      name: name
-      in: path
-      required: true
-      description: Name of the policy.
-      schema:
-        type: string
-        example: dev-policy
   securitySchemes:
     vaultToken:
       type: apiKey

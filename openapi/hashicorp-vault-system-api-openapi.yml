@@ -546,72 +546,6 @@ paths:
                 $ref: '#/components/schemas/VaultResponse'
 components:
   schemas:
-    VaultResponse:
-      type: object
-      properties:
-        request_id:
-          type: string
-        lease_id:
-          type: string
-        renewable:
-          type: boolean
-        lease_duration:
-          type: integer
-        data:
-          type: object
-          additionalProperties: true
-        wrap_info:
-          type: object
-          properties:
-            token:
-              type: string
-            accessor:
-              type: string
-            ttl:
-              type: integer
-            creation_time:
-              type: string
-              format: date-time
-            creation_path:
-              type: string
-            wrapped_accessor:
-              type: string
-          nullable: true
-        warnings:
-          type: array
-          items:
-            type: string
-          nullable: true
-        auth:
-          type: object
-          properties:
-            client_token:
-              type: string
-            accessor:
-              type: string
-            policies:
-              type: array
-              items:
-                type: string
-            token_policies:
-              type: array
-              items:
-                type: string
-            metadata:
-              type: object
-              additionalProperties:
-                type: string
-            lease_duration:
-              type: integer
-            renewable:
-              type: boolean
-            entity_id:
-              type: string
-            token_type:
-              type: string
-            orphan:
-              type: boolean
-          nullable: true
     HealthStatus:
       type: object
       properties:
@@ -694,6 +628,72 @@ components:
           type: boolean
         storage_type:
           type: string
+    VaultResponse:
+      type: object
+      properties:
+        request_id:
+          type: string
+        lease_id:
+          type: string
+        renewable:
+          type: boolean
+        lease_duration:
+          type: integer
+        data:
+          type: object
+          additionalProperties: true
+        wrap_info:
+          type: object
+          properties:
+            token:
+              type: string
+            accessor:
+              type: string
+            ttl:
+              type: integer
+            creation_time:
+              type: string
+              format: date-time
+            creation_path:
+              type: string
+            wrapped_accessor:
+              type: string
+          nullable: true
+        warnings:
+          type: array
+          items:
+            type: string
+          nullable: true
+        auth:
+          type: object
+          properties:
+            client_token:
+              type: string
+            accessor:
+              type: string
+            policies:
+              type: array
+              items:
+                type: string
+            token_policies:
+              type: array
+              items:
+                type: string
+            metadata:
+              type: object
+              additionalProperties:
+                type: string
+            lease_duration:
+              type: integer
+            renewable:
+              type: boolean
+            entity_id:
+              type: string
+            token_type:
+              type: string
+            orphan:
+              type: boolean
+          nullable: true
   securitySchemes:
     VaultToken:
       type: apiKey

@@ -152,6 +152,39 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    PolicyResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Policy name.
+              example: dev-policy
+            policy:
+              type: string
+              description: HCL policy document.
+              example: path "secret/*" { capabilities = ["read"] }
+    PolicyRequest:
+      type: object
+      required:
+      - policy
+      properties:
+        policy:
+          type: string
+          description: HCL policy document defining path-based access rules. Capabilities include create, read, update, delete, list, and sudo.
+          example: path "secret/data/myapp/*" { capabilities = ["create", "read", "update"] }
+    VaultError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+          description: List of error messages.
+          example:
+          - permission denied
     PoliciesListResponse:
       type: object
       properties:
@@ -167,39 +200,6 @@ components:
               - default
               - root
               - dev-policy
-    PolicyRequest:
-      type: object
-      required:
-      - policy
-      properties:
-        policy:
-          type: string
-          description: HCL policy document defining path-based access rules. Capabilities include create, read, update, delete, list, and sudo.
-          example: path "secret/data/myapp/*" { capabilities = ["create", "read", "update"] }
-    PolicyResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            name:
-              type: string
-              description: Policy name.
-              example: dev-policy
-            policy:
-              type: string
-              description: HCL policy document.
-              example: path "secret/*" { capabilities = ["read"] }
-    VaultError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-          description: List of error messages.
-          example:
-          - permission denied
   parameters:
     PolicyName:
       name: name

@@ -1,4 +1,4 @@
-# HashiCorp Vault (hashicorp-vault)
+# HashiCorp Vault
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,65 +66,174 @@
 
 HashiCorp Vault is a secrets management tool that provides secure storage, access control, and distribution of tokens, passwords, certificates, and encryption keys. It provides a unified interface to any secret while providing tight access control and recording a detailed audit log.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/apis.yml)
+**Areas:** DevOps · Encryption · Infrastructure · Secrets Management · Security
 
-## Scope
+## HashiCorp Vault on APIs.io
 
-- **Type:** Index
+Everything profiled for HashiCorp Vault is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/hashicorp-vault/](https://apis.io/providers/hashicorp-vault/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (14)
 
-- DevOps
-- Encryption
-- Infrastructure
-- Secrets Management
-- Security
+- [HashiCorp Vault Auth - AppRole API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-auth-approle-api/) — AppRole auth method
+- [HashiCorp Vault Auth - Token API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-auth-token-api/) — Token auth method
+- [HashiCorp Vault Auth - Userpass API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-auth-userpass-api/) — Username/password auth method
+- [HashiCorp Vault Identity API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-identity-api/) — Identity secrets engine
+- [HashiCorp Vault Leases API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-leases-api/) — Lease management
+- [HashiCorp Vault Policy API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-policy-api/) — ACL policy management
+- [HashiCorp Vault Secrets - KV v2 API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-secrets-kv-v2-api/) — Key/Value secrets engine version 2
+- [HashiCorp Vault Secrets - Transit API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-secrets-transit-api/) — Transit secrets engine (encryption as a service)
+- [HashiCorp Vault System API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-system-api/) — System backend operations (init, seal, mounts, auth, audit)
+- [Vault HTTP API](https://apis.io/apis/hashicorp-vault/vault-api/) — The complete Vault HTTP API gives full access to all Vault operations via REST. Includes authentication method APIs (AppRole, LDAP, JWT, Kubernetes, AWS,…
+- [HashiCorp Vault Policies API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-policies-api/) — Create, read, update, delete, and list ACL policies.
+- [HashiCorp Vault Secrets Config API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-secrets-config-api/) — Configure KV v2 engine settings such as max versions and CAS required.
+- [HashiCorp Vault Secrets Data API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-secrets-data-api/) — Read, write, patch, and delete secret data versions in the KV v2 engine.
+- [HashiCorp Vault Secrets Metadata API](https://apis.io/apis/hashicorp-vault/hashicorp-vault-secrets-metadata-api/) — Manage metadata and version history for KV v2 secrets.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### HashiCorp Vault HTTP API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Vault HTTP API provides full access to Vault via HTTP. Every aspect of Vault can be controlled via this API. The Vault CLI uses the HTTP API to access Vault functionality.
+- [Hashicorp Vault Agentic Access](https://apis.io/agentic-access/hashicorp-vault/hashicorp-vault-agentic-access/)
 
-- **Human URL:** [https://developer.hashicorp.com/vault/api-docs](https://developer.hashicorp.com/vault/api-docs)
-- **Base URL:** `https://127.0.0.1:8200/v1`
+#### JSON Schema (3)
 
-#### Tags
+The data models the API reads and writes.
 
-- Encryption
-- Secrets Management
-- Security
+- [SecretDataRequest](https://apis.io/schemas/hashicorp-vault/vault-kv-secret-data-request/)
+- [SecretDataResponse](https://apis.io/schemas/hashicorp-vault/vault-kv-secret-data-response/)
+- [HealthResponse](https://apis.io/schemas/hashicorp-vault/vault-sys-health-response/)
 
-#### Properties
+#### JSON Structure (2)
 
-- [Documentation](https://developer.hashicorp.com/vault/api-docs)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/hashicorp-vault/refs/heads/main/openapi/hashicorp-vault-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://developer.hashicorp.com/vault/docs/auth)
-- [Getting Started](https://developer.hashicorp.com/vault/tutorials)
-- [Postman Collection](collections/hashicorp-vault.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hashicorp-vault.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Vault Kv Secret Data Request Structure](https://apis.io/json-structure/hashicorp-vault/vault-kv-secret-data-request-structure/)
+- [Vault Sys Health Response Structure](https://apis.io/json-structure/hashicorp-vault/vault-sys-health-response-structure/)
 
-- [LinkedIn](https://www.linkedin.com/company/hashicorp)
+#### JSON-LD (2)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Vault Kv Context](https://apis.io/jsonld/hashicorp-vault/vault-kv-context/)
+- [Vault Sys Context](https://apis.io/jsonld/hashicorp-vault/vault-sys-context/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Vault Kv Secret Data Response Example](https://apis.io/examples/hashicorp-vault/vault-kv-secret-data-response-example/)
+- [Vault Sys Health Response Example](https://apis.io/examples/hashicorp-vault/vault-sys-health-response-example/)
+
+#### Collections (10)
+
+Postman and Open Collection request collections.
+
+- [HashiCorp Vault HTTP API](https://apis.io/collections/hashicorp-vault/open-hashicorp-vault/)
+- [HashiCorp Vault HTTP Auth - AppRole API](https://apis.io/collections/hashicorp-vault/open-hashicorp-vault-auth-approle-api/)
+- [HashiCorp Vault HTTP Auth - AppRole Auth - Token API](https://apis.io/collections/hashicorp-vault/open-hashicorp-vault-auth-token-api/)
+- [HashiCorp Vault HTTP Auth - AppRole Auth - Userpass API](https://apis.io/collections/hashicorp-vault/open-hashicorp-vault-auth-userpass-api/)
+- [HashiCorp Vault HTTP Auth - AppRole Identity API](https://apis.io/collections/hashicorp-vault/open-hashicorp-vault-identity-api/)
+- [HashiCorp Vault HTTP Auth - AppRole Leases API](https://apis.io/collections/hashicorp-vault/open-hashicorp-vault-leases-api/)
+- [HashiCorp Vault HTTP Auth - AppRole Policy API](https://apis.io/collections/hashicorp-vault/open-hashicorp-vault-policy-api/)
+- [HashiCorp Vault HTTP Auth - AppRole Secrets - KV v2 API](https://apis.io/collections/hashicorp-vault/open-hashicorp-vault-secrets-kv-v2-api/)
+- [HashiCorp Vault HTTP Auth - AppRole Secrets - Transit API](https://apis.io/collections/hashicorp-vault/open-hashicorp-vault-secrets-transit-api/)
+- [HashiCorp Vault HTTP Auth - AppRole System API](https://apis.io/collections/hashicorp-vault/open-hashicorp-vault-system-api/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Hashicorp Vault Authentication](https://apis.io/security/hashicorp-vault/hashicorp-vault-authentication/)
+- [Hashicorp Vault Domain Security](https://apis.io/security/hashicorp-vault/hashicorp-vault-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Hashicorp Vault Plans Pricing](https://apis.io/plans/hashicorp-vault/hashicorp-vault-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Hashicorp Vault Rate Limits](https://apis.io/rate-limits/hashicorp-vault/hashicorp-vault-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Hashicorp Vault Finops](https://apis.io/finops/hashicorp-vault/hashicorp-vault-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.vaultproject.io/)
 - [Documentation](https://developer.hashicorp.com/vault/docs)
-- [Getting Started](https://developer.hashicorp.com/vault/tutorials)
-- [Support](https://support.hashicorp.com)
-- [Status Page](https://status.hashicorp.com)
-- [Blog](https://www.hashicorp.com/blog)
+- [Getting started](https://developer.hashicorp.com/vault/tutorials)
 - [Pricing](https://www.hashicorp.com/products/vault/pricing)
-- [Terms of Service](https://www.hashicorp.com/terms-of-service)
-- [Privacy Policy](https://www.hashicorp.com/privacy)
-- [GitHub Organization](https://github.com/hashicorp/vault)
-- [S D Ks](https://developer.hashicorp.com/vault/docs/libraries)
+- [Support](https://support.hashicorp.com)
+- [Blog](https://www.hashicorp.com/blog)
+- [Terms of service](https://www.hashicorp.com/terms-of-service)
+- [Privacy policy](https://www.hashicorp.com/privacy)
+- [GitHub](https://github.com/hashicorp/vault)
+- [Status](https://status.hashicorp.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 42.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 53.6 |
+| Contract governance | 0.0 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 46.4 |
+| Access clarity | 23.7 |
+
+**Agent readiness 29.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/hashicorp-vault/](https://apis.io/providers/hashicorp-vault/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for HashiCorp Vault: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/hashicorp-vault/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
